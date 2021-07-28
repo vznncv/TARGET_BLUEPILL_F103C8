@@ -27,14 +27,9 @@ extern "C" {
 
 typedef enum {
     ALT0  = 0x100,
-    ALT1  = 0x200,
-    ALT2  = 0x300,
-    ALT3  = 0x400,
-    ALT4  = 0x500
 } ALTx;
 
 typedef enum {
-
     PA_0       = 0x00,
     PA_1       = 0x01,
     PA_2       = 0x02,
@@ -80,64 +75,20 @@ typedef enum {
 
     ADC_TEMP = 0xF0, // Internal pin virtual value
     ADC_VREF = 0xF1, // Internal pin virtual value
-//    ADC_VBAT = 0xF2, // Internal pin virtual value
+    // ADC_VBAT = 0xF2, // Internal pin virtual value
 
-//    // Arduino Uno(Rev3) Header pin connection naming
-//    A0 = Px_x,
-//    A1 = Px_x,
-//    A2 = Px_x,
-//    A3 = Px_x,
-//    A4 = Px_x,
-//    A5 = Px_x,
-//    D0 = Px_x,
-//    D1 = Px_x,
-//    D2 = Px_x,
-//    D3 = Px_x,
-//    D4 = Px_x,
-//    D5 = Px_x,
-//    D6 = Px_x,
-//    D7 = Px_x,
-//    D8 = Px_x,
-//    D9 = Px_x,
-//    D10= Px_x,
-//    D11= Px_x,
-//    D12= Px_x,
-//    D13= Px_x,
-//    D14= Px_x,
-//    D15= Px_x,
 
     // STDIO for console print
 #ifdef MBED_CONF_TARGET_STDIO_UART_TX
-    STDIO_UART_TX = MBED_CONF_TARGET_STDIO_UART_TX,
+    CONSOLE_TX = MBED_CONF_TARGET_STDIO_UART_TX,
 #else
-    STDIO_UART_TX = PA_2,
+    CONSOLE_TX = PA_2,
 #endif
 #ifdef MBED_CONF_TARGET_STDIO_UART_RX
-    STDIO_UART_RX = MBED_CONF_TARGET_STDIO_UART_RX,
+    CONSOLE_RX = MBED_CONF_TARGET_STDIO_UART_RX,
 #else
-    STDIO_UART_RX = PA_3,
+    CONSOLE_RX = PA_3,
 #endif
-
-    USBTX = STDIO_UART_TX, // used for greentea tests
-    USBRX = STDIO_UART_RX, // used for greentea tests
-
-    // I2C signals aliases
-    I2C_SDA = PB_6,
-    I2C_SCL = PB_7,
-
-    // SPI signals aliases
-    SPI_CS   = PA_4,
-    SPI_MOSI = PA_7,
-    SPI_MISO = PA_6,
-    SPI_SCK  = PA_5,
-
-    // Standardized LED and button names
-    LED1    = PC_13,
-    // BUTTON1 = NC,
-
-    // Backward legacy names
-    // USER_BUTTON = BUTTON1,
-    PWM_OUT = PB_5,
 
     /**** USB pins ****/
     USB_DM = PA_11,
@@ -160,6 +111,10 @@ typedef enum {
     // Not connected
     NC = (int)0xFFFFFFFF
 } PinName;
+
+// Standardized LED and button names
+#define LED1     PC_13   // TODO
+//#define BUTTON1  NC   // there no standard button
 
 #ifdef __cplusplus
 }
