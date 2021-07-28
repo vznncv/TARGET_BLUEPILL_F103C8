@@ -1,42 +1,17 @@
 {
     "BLUEPILL_F103C8": {
         "inherits": [
-            "MCU_STM32"
+            "MCU_STM32F103x8"
         ],
-        "core": "Cortex-M3",
-        "c_lib": "small",
-        "extra_labels_add": [
-            "STM32F1",
-            "STM32F103x8"
-        ],
-        "macros_add": [
-            "STM32F103xB"
-        ],
-        "config": {
-            "clock_source": {
-                "help": "Mask value : USE_PLL_HSE_EXTC | USE_PLL_HSE_XTAL | USE_PLL_HSI",
-                "value": "USE_PLL_HSE_EXTC|USE_PLL_HSE_XTAL|USE_PLL_HSI",
-                "macro_name": "CLOCK_SOURCE"
-            }
+        "overrides": {
+            "clock_source": "USE_PLL_HSE_XTAL | USE_PLL_HSI",
+            "rtc_clock_source": "USE_RTC_CLK_LSE_OR_LSI",
+            "lse_available": 1,
+            "default-adc-vref": "3.3f"
         },
         "detect_code": [
             "1234"
         ],
-        "device_has_add": [
-            "SERIAL_ASYNCH",
-            "FLASH",
-            "CAN"
-        ],
-        "device_has_remove": [
-            "LPTICKER"
-        ],
-        "device_name": "STM32F103C8Tx",
-        "release_versions": [
-            "5",
-            "6"
-        ],
-        "overrides": {
-            "default-adc-vref": "3.3f"
-        }
+        "device_name": "STM32F103C8Tx"
     }
 }
